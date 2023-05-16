@@ -32,7 +32,6 @@ for link_facultad in soup.find_all('a', class_='uk-position-cover'):
                   cadena_formateada = cadena_formateada.replace(':', '')
                   carrera['precios'] = cadena_formateada
             semestres = []
-            print(carrera)
             for semestre in soup_carrera.find_all('div', class_='elementor-price-table'):
               materias = []
               div_materias = semestre.find_all('div', class_='elementor-price-table__feature-inner')

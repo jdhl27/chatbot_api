@@ -150,7 +150,6 @@ def responder_semestres(carrera):
 
 def responder_materias(carrera, texto):
     materias_carrera = data[data["Carrera"].str.lower() == carrera]["Materias"]
-    print(materias_carrera)
     if len(materias_carrera) == 0:
         respuesta = "No encontré ninguna materia que coincida con tu consulta."
     else:
