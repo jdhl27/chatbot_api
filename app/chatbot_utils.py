@@ -25,3 +25,16 @@ carreras = procesar_datos_iniciales("Carrera")
 precios = procesar_datos_iniciales("Precio")
 semestres = procesar_datos_iniciales("Semestre")
 materias = procesar_datos_iniciales("Materias", True)
+
+# Leer los arrays desde el archivo de texto
+with open('datos_claves.txt', 'r') as archivo:
+    lineas = archivo.readlines()
+    palabras_clave_saludos = lineas[0].strip().split(',')
+    palabras_clave_facultades = lineas[1].strip().split(',')
+    palabras_clave_carreras = lineas[2].strip().split(',')
+    palabras_clave_precios = lineas[3].strip().split(',')
+    palabras_clave_semestre = lineas[4].strip().split(',')
+    palabras_clave_materias = lineas[5].strip().split(',')
+    palabras_clave_ayuda = lineas[6].strip().split(',')
+    palabras_clave_despedidas = lineas[7].strip().split(',')
+    palabras_clave_unidades = lineas[8].strip().split(',')
