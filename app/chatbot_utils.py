@@ -163,3 +163,13 @@ def responder_ayuda():
 
 def responder_despedida():
     return generar_respuesta(respuestas_despedidas)
+
+# def corregir_texto(texto):
+#     # Creamos una instancia de LanguageTool para el idioma español
+#     tool = language_tool_python.LanguageTool('es')
+
+#     # Verificamos la gramática y ortografía del texto
+#     correcciones = tool.correct(texto)
+
+#     # Retornamos el texto corregido
+#     return correcciones
