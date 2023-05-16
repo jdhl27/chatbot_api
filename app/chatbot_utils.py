@@ -67,3 +67,39 @@ respuestas_facultad = ["Las facultades disponibles en la universidad son",
 respuestas_carreras = ["Las carreras disponibles son", 
                           "Te puedes encontrar con las siguientes carreras",
                           "Los programas que se ofertan son"]
+
+# Funciones de procesamiento de texto
+def limpiar_texto(texto):
+    tokens = nltk.word_tokenize(texto)
+    tokens = [token.lower() for token in tokens if token.isalpha()]
+    return tokens
+
+  
+def encontrar_dato(tokens, datos):
+    # Convertir tokens a un conjunto para buscar de manera eficiente
+    token_set = set(tokens)
+
+    # Contador para contar la cantidad de apariciones de tokens en cada dato
+    apariciones = {}
+
+    for dato in datos:
+        # Convertir el dato en un conjunto de palabras
+        dato_set = set(dato.lower().split())
+
+        # Calcular la cantidad de palabras en común entre los tokens y el dato
+        n_coincidencias = len(token_set & dato_set)
+
+        # Agregar las coincidencias al contador
+        apariciones[dato] = n_coincidencias
+
+    # Ordenar los datos por cantidad de coincidencias, de mayor a menor
+    datos_ordenados = sorted(datos, key=lambda x: apariciones[x], reverse=True)
+
+    # Si hay un solo dato con la máxima cantidad de coincidencias, devolverlo
+    if apariciones[datos_ordenados[0]] > 0 and apariciones[datos_ordenados[0]] >= apariciones[datos_ordenados[1]]:
+        return datos_ordenados[0]
+    else:
+        return None
+  
+def quitar_tildes(frase):
+    return ''.join((c for c in unicodedata.normalize('NFD', frase) if unicodedata.category(c) != 'Mn'))
