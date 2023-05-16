@@ -103,3 +103,9 @@ def encontrar_dato(tokens, datos):
   
 def quitar_tildes(frase):
     return ''.join((c for c in unicodedata.normalize('NFD', frase) if unicodedata.category(c) != 'Mn'))
+
+# Generar respuesta aleatoria
+def generar_respuesta(palabrasRandom, listaDatos = None):
+  if listaDatos is not None:
+    return random.choice(palabrasRandom) + ": " + "; ".join(listaDatos)
+  return random.choice(palabrasRandom)
