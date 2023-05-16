@@ -146,7 +146,7 @@ def responder_todas_carreras(unidades = False):
 
 def responder_precios(carrera):
     precio_carrera = data[data["Carrera"].str.lower() == carrera]["Precio"].values[0]
-    respuesta = "Los precios de " + carrera + " son " + str(precio_carrera)
+    respuesta = "Los precios de la carrera " + carrera + " son de " + str(precio_carrera)
     return respuesta
 
 def responder_semestres(carrera):
@@ -159,7 +159,7 @@ def responder_materias(carrera, texto):
     if len(materias_carrera) == 0:
         respuesta = "No encontré ninguna materia que coincida con tu consulta."
     else:
-        respuesta = "Las materias que encontré son: " + ", ".join(materias_carrera) + ". Si quieres mas información acercate al TdeA"
+        respuesta = "Las materias que encontré son (Si quieres mas información acercate al TdeA): " + ", ".join(materias_carrera)
     return respuesta
 
 def responder_ayuda():
