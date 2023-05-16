@@ -26,18 +26,25 @@ precios = procesar_datos_iniciales("Precio")
 semestres = procesar_datos_iniciales("Semestre")
 materias = procesar_datos_iniciales("Materias", True)
 
+## Procesar datos claves iniciales
+def quitar_tildes(frase):
+    return ''.join((c for c in unicodedata.normalize('NFD', frase) if unicodedata.category(c) != 'Mn'))
+
+def procesar_datos_claves(num):
+    return [quitar_tildes(palabra.strip().lower()) for palabra in lineas[num].split(',')]
+
 # Leer los arrays desde el archivo de texto
 with open('datos_claves.txt', 'r') as archivo:
     lineas = archivo.readlines()
-    palabras_clave_saludos = lineas[0].strip().split(',')
-    palabras_clave_facultades = lineas[1].strip().split(',')
-    palabras_clave_carreras = lineas[2].strip().split(',')
-    palabras_clave_precios = lineas[3].strip().split(',')
-    palabras_clave_semestre = lineas[4].strip().split(',')
-    palabras_clave_materias = lineas[5].strip().split(',')
-    palabras_clave_ayuda = lineas[6].strip().split(',')
-    palabras_clave_despedidas = lineas[7].strip().split(',')
-    palabras_clave_unidades = lineas[8].strip().split(',')
+    palabras_clave_saludos = procesar_datos_claves(0)
+    palabras_clave_facultades = procesar_datos_claves(1)
+    palabras_clave_carreras = procesar_datos_claves(2)
+    palabras_clave_precios = procesar_datos_claves(3)
+    palabras_clave_semestre = procesar_datos_claves(4)
+    palabras_clave_materias = procesar_datos_claves(5)
+    palabras_clave_ayuda = procesar_datos_claves(6)
+    palabras_clave_despedidas = procesar_datos_claves(7)
+    palabras_clave_unidades = procesar_datos_claves(8)
 
 
 # Posibles respuestas
@@ -100,9 +107,6 @@ def encontrar_dato(tokens, datos):
         return datos_ordenados[0]
     else:
         return None
-  
-def quitar_tildes(frase):
-    return ''.join((c for c in unicodedata.normalize('NFD', frase) if unicodedata.category(c) != 'Mn'))
 
 # Generar respuesta aleatoria
 def generar_respuesta(palabrasRandom, listaDatos = None):
