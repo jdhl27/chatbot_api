@@ -3,6 +3,8 @@ import pandas as pd
 import random
 import unicodedata
 
+nombre = 'ChatChirreT'
+
 # import language_tool_python
 
 # Datos para tokenizar
@@ -48,8 +50,8 @@ with open('datos_claves.txt', 'r') as archivo:
 
 
 # Posibles respuestas
-respuestas_saludos = ["¡Hola! ¿En qué puedo ayudarte?",
-                  "¡Hola! ¿En qué puedo ayudarte hoy?",
+respuestas_saludos = ["¡Hola! Soy " + nombre + " ¿En qué puedo ayudarte?",
+                  "¡Hola! Soy un bot llamado " + nombre + " ¿En qué puedo ayudarte hoy?",
                   "Hola, ¿cómo puedo ayudarte?"]
                   
 respuestas_despedidas = ["¡Fue un placer ayudarte!",
