@@ -185,33 +185,30 @@ def chatbot_cognitivo(texto):
     # texto_correc = corregir_texto(texto)
     texto = quitar_tildes(texto).lower()
     tokens = limpiar_texto(texto)
-    # Saludos
-    if any(palabra in tokens for palabra in palabras_clave_saludos):
-        respuesta = responder_saludo()
     
     # Facultades
-    elif any(palabra in tokens for palabra in palabras_clave_facultades):
-      if any(palabra in tokens for palabra in palabras_clave_unidades):
+    if any(palabra in texto or palabra in tokens for palabra in palabras_clave_facultades):
+      if any(palabra in texto or palabra in tokens for palabra in palabras_clave_unidades):
         respuesta = responder_facultades(True)
       else:
         respuesta = responder_facultades()
     
     # Carreras
-    elif any(palabra in tokens for palabra in palabras_clave_carreras):
+    elif any(palabra in texto or palabra in tokens for palabra in palabras_clave_carreras):
         facultad = encontrar_dato(tokens, facultades)
         if facultad:
-          if any(palabra in tokens for palabra in palabras_clave_unidades):
+          if any(palabra in texto or palabra in tokens for palabra in palabras_clave_unidades):
             respuesta = responder_carreras(facultad, True)
           else:
             respuesta = responder_carreras(facultad)
         else:
-          if any(palabra in tokens for palabra in palabras_clave_unidades):
+          if any(palabra in texto or palabra in tokens for palabra in palabras_clave_unidades):
             respuesta = responder_todas_carreras(True)
           else:
             respuesta = responder_todas_carreras()
 
     # Precios
-    elif any(palabra in tokens for palabra in palabras_clave_precios):
+    elif any(palabra in texto or palabra in tokens for palabra in palabras_clave_precios):
         carrera = encontrar_dato(tokens, carreras)
 
         if carrera:
@@ -220,7 +217,7 @@ def chatbot_cognitivo(texto):
             respuesta = "No entendí a qué carrera te refieres. ¿Podrías ser más específico?"
     
     # Semestre
-    elif any(palabra in tokens for palabra in palabras_clave_semestre):
+    elif any(palabra in texto or palabra in tokens for palabra in palabras_clave_semestre):
         carrera = encontrar_dato(tokens, carreras)
 
         if carrera:
@@ -229,19 +226,23 @@ def chatbot_cognitivo(texto):
             respuesta = "No entendí a qué carrera te refieres. ¿Podrías ser más específico?"
 
     # Materias
-    elif any(palabra in tokens for palabra in palabras_clave_materias):
+    elif any(palabra in texto or palabra in tokens for palabra in palabras_clave_materias):
         carrera = encontrar_dato(tokens, carreras)
         if carrera:
             respuesta = responder_materias(carrera, texto)
         else:
             respuesta = "No entendí a qué carrera te refieres. ¿Podrías ser más específico?"
+            
+    # Saludos
+    if any(palabra in texto or palabra in tokens for palabra in palabras_clave_saludos):
+        respuesta = responder_saludo()
     
     # Ayuda
-    elif any(palabra in tokens for palabra in palabras_clave_ayuda):
+    elif any(palabra in texto or palabra in tokens for palabra in palabras_clave_ayuda):
         respuesta = responder_ayuda()
     
     # Despedidas
-    elif any(palabra in tokens for palabra in palabras_clave_despedidas):
+    elif any(palabra in texto or palabra in tokens for palabra in palabras_clave_despedidas):
         respuesta = responder_despedida()
         
     return respuesta
