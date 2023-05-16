@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import csv
 
 url = 'https://www.tdea.edu.co/'
 
@@ -43,3 +44,21 @@ for link_facultad in soup.find_all('a', class_='uk-position-cover'):
             facultad['carreras'].append(carrera)
 
         facultades.append(facultad)
+
+## Generar datos en csv
+with open('datos_tdea.csv', mode='w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    
+    # Escribir la cabecera
+    writer.writerow(['Facultad', 'Carrera', 'Precio', 'Semestre', 'Materias'])
+    
+    # Escribir cada fila con los datos
+    for facultad in facultades:
+        nombre_facultad = facultad['nombre']
+        for carrera in facultad['carreras']:
+            nombre_carrera = carrera['carrera']
+            precio = carrera['precios']
+            for semestre in carrera['plan de estudio']:
+                nombre_semestre = semestre['semestre']
+                materias = ';'.join(semestre['materias'])
+                writer.writerow([nombre_facultad, nombre_carrera, precio, nombre_semestre, materias])
