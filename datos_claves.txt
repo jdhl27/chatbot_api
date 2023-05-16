@@ -1,0 +1,9 @@
+hola,buenos dias,buenas tardes,buenas noches,buen dia,buena tarde,buena,bien,buena noche,buenos noches,buenos dias,hola 
+facultades,bloques,departamentos,universidad,estudiar,estudiantes
+carreras,programas, información, informacion,programas académicos,facultad,la facultad
+precio,precios,costo,valor,tarifa,cotización,presupuesto,cuesta,vale
+semestre,semestres,tiempo,duracion,dura,ciclos,pensum,horario
+materias,materia,asignatura,asignaturas,tecnica,tecnicas,profesional,tecnologia,tecnologias,creditos
+ayuda,duda,no se,nose,dudas,ayudame,no entiendo,como funcionas,como funciona,chatpeyet,chatbot,pregunta,preguntas,dar,respuestas
+gracias,chao,adios,muchas gracias,agradecido,amable,hasta luego,hasta la vista,hasta pronto,util,servicial
+cuántos,cuántas,cuantas,cuantos,cantidad,cantidades,unidad,unidades,medida,medidas,dimensión,dimensiones,tamaño,tamaños,volumen,volúmenes,peso,pesos,longitud,ancho,alto
