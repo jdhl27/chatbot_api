@@ -109,3 +109,57 @@ def generar_respuesta(palabrasRandom, listaDatos = None):
   if listaDatos is not None:
     return random.choice(palabrasRandom) + ": " + "; ".join(listaDatos)
   return random.choice(palabrasRandom)
+
+# Funciones de respuesta del chatbot
+def responder_saludo():
+    return generar_respuesta(respuestas_saludos)
+
+def responder_facultades(unidades = False):
+    respuesta = generar_respuesta(respuestas_facultad, facultades)
+    if unidades:
+      respuesta = "En total son " + str(len(facultades)) + " facultades. " + respuesta
+    return respuesta
+
+def responder_carreras(facultad, unidades = False):
+    respuesta = ""
+    carreras_facultad = data[data["Facultad"].str.lower() == facultad]["Carrera"].unique()
+    if len(carreras_facultad) > 0:
+      if unidades:
+        respuesta = "En total son " + str(len(carreras_facultad)) + " carerras. " + generar_respuesta(respuestas_carreras, carreras_facultad)
+      else:
+        respuesta = generar_respuesta(respuestas_carreras, carreras_facultad)
+    else:
+        respuesta = "Lo siento. No se encontraron carreras para la " + facultad
+    return respuesta
+
+def responder_todas_carreras(unidades = False):
+    respuesta = generar_respuesta(respuestas_carreras, carreras)
+    if unidades:
+      respuesta = "En total son " + str(len(carreras)) + " carerras. " + respuesta
+    return respuesta
+
+def responder_precios(carrera):
+    precio_carrera = data[data["Carrera"].str.lower() == carrera]["Precio"].values[0]
+    respuesta = "Los precios de " + carrera + " son " + str(precio_carrera)
+    return respuesta
+
+def responder_semestres(carrera):
+    semestre_carrera = data[data["Carrera"].str.lower() == carrera]["Semestre"]
+    respuesta = "La duración de " + carrera + " es de " + str(len(semestre_carrera)) + " semestres."
+    return respuesta
+
+def responder_materias(carrera, texto):
+    materias_carrera = data[data["Carrera"].str.lower() == carrera]["Materias"]
+    print(materias_carrera)
+    if len(materias_carrera) == 0:
+        respuesta = "No encontré ninguna materia que coincida con tu consulta."
+    else:
+        respuesta = "Las materias que encontré son: " + ", ".join(materias_carrera) + ". Si quieres mas información acercate al TdeA"
+    return respuesta
+
+def responder_ayuda():
+    respuesta = "Puedo ayudarte con información sobre las facultades, carreras, precios, semestres y materias de la universidad. Solo pregúntame lo que necesites."
+    return respuesta
+
+def responder_despedida():
+    return generar_respuesta(respuestas_despedidas)
