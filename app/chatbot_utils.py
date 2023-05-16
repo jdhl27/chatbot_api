@@ -38,3 +38,32 @@ with open('datos_claves.txt', 'r') as archivo:
     palabras_clave_ayuda = lineas[6].strip().split(',')
     palabras_clave_despedidas = lineas[7].strip().split(',')
     palabras_clave_unidades = lineas[8].strip().split(',')
+
+
+# Posibles respuestas
+respuestas_saludos = ["¡Hola! ¿En qué puedo ayudarte?",
+                  "¡Hola! ¿En qué puedo ayudarte hoy?",
+                  "Hola, ¿cómo puedo ayudarte?"]
+                  
+respuestas_despedidas = ["¡Fue un placer ayudarte!",
+                  "¡Hasta luego!",
+                  "¡Que tengas un buen día!"]
+
+respuestas_facultad = ["Las facultades disponibles en la universidad son", 
+                       "En la universidad ofrecemos las siguientes facultades",
+                       "Las facultades inscritas actualmente en la universidad son",
+                       "Nuestra universidad ofrece diversas facultades, entre ellas",
+                       "Puedes encontrar una amplia variedad de facultades en nuestra universidad, tales como",
+                       "Contamos con varias facultades que podrían interesarte, como por ejemplo",
+                       "Si buscas estudiar en una de las mejores universidades del país, nuestras facultades incluyen",
+                       "En nuestra universidad, las opciones de facultades disponibles para ti son",
+                       "Te ofrecemos una amplia variedad de facultades para que elijas la que mejor se adapte a tus intereses, tales como",
+                       "Nuestro catálogo de facultades incluye",
+                       "Las facultades más populares de nuestra universidad son",
+                       "Entre nuestras facultades más destacadas se encuentran",
+                       "Si te interesa alguna de estas áreas de estudio, tenemos las siguientes facultades",
+                       "No importa tu área de interés, en nuestra universidad seguro encontrarás una facultad que se adapte a ti, como por ejemplo"]
+
+respuestas_carreras = ["Las carreras disponibles son", 
+                          "Te puedes encontrar con las siguientes carreras",
+                          "Los programas que se ofertan son"]
