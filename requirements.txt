@@ -1,0 +1,4 @@
+flask
+nltk
+pandas
+language_tool_python
